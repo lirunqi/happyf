@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "happyf_dbquery",
-    "django_weixin"
 ]
 
 MIDDLEWARE = [

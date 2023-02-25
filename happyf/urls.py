@@ -20,4 +20,5 @@ from happyf_dbquery import urls
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('hfq/',include(urls)),
+
 ]

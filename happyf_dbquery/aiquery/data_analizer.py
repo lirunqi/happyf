@@ -1,31 +1,38 @@
-from sklearn.cluster import KMeans
+from sklearn.neighbors import KNeighborsClassifier
 
-tmp = [
-    [[2.3, 2.1, 1.9], [2.5, 2.1, 0.6], 1],  # 初+终+结果
-    [[2.3, 2.1, 1.9], [2.5, 2.1, 0.6], 2],
+tmp_data = [
+    [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],  # 初+终+结果
+    [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],
+    [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],
+    [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],
+    [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],
 ]
+tmp_label = [1, 0, 1, 1, 1]
+
 
 class DataAna:
-    def __init__(self, data):
-        """
-        Initializes the model and fits it to the given data using K-Means clustering.
-        """
-        self.model = KMeans(n_clusters=len(set([d[2] for d in data])))
-        points = [d[:2] for d in data]  # 仅选择前两个维度
-        self.model.fit(points)
+    def __init__(self, k=5):
+        self.k = k
+        self.model = KNeighborsClassifier(n_neighbors=k)
 
-    def predict(self, point):
-        """
-        Predicts the cluster for the given point.
-        """
-        if len(point) != 3:
-            raise ValueError("Point must be a list of three elements")
-        cluster = self.model.predict([point[:2]])[0]
-        return cluster
+    def fit(self, X, y):
+        self.model.fit(X, y)
+
+    def predict(self, X):
+        return self.model.predict(X)
+
+    # 根据四个参数找数据集
+    def dataf(self, a, b, c, d,request):
+
+        # 以下三行是造出来的测试数据，后面需要根据a, b, c, d从数据库拉出来
+        X_train = tmp_data
+        y_train = tmp_label
+        request = [[2.5, 2.1, 0.6, 2.5, 2.1, 0.6]]
+
+        self.fit(X_train,y_train)
+        return self.predict(request)
 
 
 if __name__ == '__main__':
-    dataAnner = DataAna(tmp)
-    point = [[2.5, 2.1, 0.6],[2.5, 2.1, 0.6]]
-    cluster = dataAnner.predict(point)
-    print(f"Predicted cluster for {point}: {cluster}")
+    model = DataAna(k=3)
+    print(model.dataf(1,2,3,4,5))

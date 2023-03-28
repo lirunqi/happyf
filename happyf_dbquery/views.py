@@ -8,6 +8,7 @@ from wechatpy.utils import check_signature
 from django.conf import settings
 from django.http import HttpResponse
 
+
 # Create your views here.
 '''
 bf_query
@@ -36,5 +37,9 @@ def handle_wx(request):
 
 
 
-class Data_Minner:
+
+class AiAna:
+    '''
+    通过Post请求接收a,b两个参数，再将a b 两个参数传给aiquery.py里面的函数获取返回值，最终返回给调用方
+    '''
     pass

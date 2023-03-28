@@ -1,6 +1,6 @@
 from data_analizer import DataAna
 
-# 只输出label对应的odd和日期
+# 只输出label对应的odd和日期。
 tmp = [
     ['2021-12-31', 1.8],
     ['2021-12-31', 1.8],

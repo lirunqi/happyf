@@ -1,7 +1,7 @@
 import scrapy
 import json
 import jsonpath
-from winD.items import WindItem
+from ..items import WindItem
 
 # r网址是滚球 h是初盘
 class HgCpSpider(scrapy.Spider):

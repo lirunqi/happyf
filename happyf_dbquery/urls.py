@@ -6,5 +6,6 @@ from .views import handle_wx
 urlpatterns = [
     path("", Query.as_view()),
     path("wechat",handle_wx),
-    # path("ai",handel_ai)
+    path("get/",Query.as_view())
+
 ]

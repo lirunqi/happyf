@@ -5,10 +5,10 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "happyf_db",
+        "NAME": "football",
         "USER": "root",
         "PASSWORD": "wobuhuiwan",
-        "HOST": "127.0.0.1",
+        "HOST": "lpksir.cn",
         "PORT": "3306",
     }
 }

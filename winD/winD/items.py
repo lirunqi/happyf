@@ -5,7 +5,6 @@
 
 import scrapy
 
-
 # 初盘result
 # date_time	日期时间
 # matchid	比赛编号

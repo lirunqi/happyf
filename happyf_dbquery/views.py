@@ -52,7 +52,7 @@ class TestftView(APIView):
         b = float(request.GET.get('b'))
         c = float(request.GET.get('c'))
         d = float(request.GET.get('d'))
-        query_set = Testft.objects.filter(p__lt=F('a'))
+        query_set = Testft.objects.filter(p__lt=a)
         df = pd.DataFrame(list(query_set.values()))
         return Response(df.to_dict(orient='records'))
 

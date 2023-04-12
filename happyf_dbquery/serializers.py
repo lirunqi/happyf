@@ -12,3 +12,8 @@ class BeforeMatchSer(serializers.ModelSerializer):
                   'home_odd',
                   'guest_odd',
                   'odd_term', ]
+
+class TestftSer(serializers.ModelSerializer):
+    class Meta:
+        model = Testft
+        fields = "__all__"

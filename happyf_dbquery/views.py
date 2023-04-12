@@ -3,10 +3,13 @@ from rest_framework.response import Response
 from django_filters import rest_framework as filters
 from .serializers import *
 from .models import *
+from django.db.models import F
 from .filter import *
 from wechatpy.utils import check_signature
 from django.conf import settings
 from django.http import HttpResponse
+from rest_framework.views import APIView
+import pandas as pd
 
 
 # Create your views here.
@@ -19,10 +22,10 @@ result_query
 
 
 class Query(generics.ListAPIView):
-    queryset = BeforeMatch.objects.all()
-    serializer_class = BeforeMatchSer
-    filter_backends = (filters.DjangoFilterBackend,)
-    filterset_fields = "__all__"
+    queryset = Testft.objects.all()
+    serializer_class = TestftSer
+    # filter_backends = (filters.DjangoFilterBackend,)
+    # filterset_fields = "__all__"
 
 def handle_wx(request):
     if request.method == 'GET':
@@ -31,12 +34,27 @@ def handle_wx(request):
         nonce = request.GET.get('nonce', '')
         echo_str = request.GET.get('echostr', '')
         check_signature(settings.TOKEN, signature, timestamp, nonce)
-
         response = HttpResponse(echo_str, content_type="text/plain")
         return response
 
+class AnaView(APIView):
+    def get(self, request):
+        a = int(request.GET.get('a'))
+        b = int(request.GET.get('b'))
+        c = int(request.GET.get('c'))
+        d = int(request.GET.get('d'))
+        result = a + b + c + d
+        return Response({'result': result})
 
-
+class TestftView(APIView):
+    def get(self, request):
+        a = float(request.GET.get('a'))
+        b = float(request.GET.get('b'))
+        c = float(request.GET.get('c'))
+        d = float(request.GET.get('d'))
+        query_set = Testft.objects.filter(p__lt=F('a'))
+        df = pd.DataFrame(list(query_set.values()))
+        return Response(df.to_dict(orient='records'))
 
 class AiAna:
     '''

@@ -7,7 +7,7 @@ urlpatterns = [
     path("", Query.as_view()),
     path("wechat",handle_wx),
     path("get/",Query.as_view()),
-    path("predict/",AnaView.as_view()),
+    path("predict/",TestftView.as_view()),
     path("ttest/",TestftView.as_view()),
 
 ]

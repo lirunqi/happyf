@@ -1,4 +1,5 @@
 from sklearn.neighbors import KNeighborsClassifier
+import pandas as pd
 
 tmp_data = [
     [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],  # 初+终+结果
@@ -8,7 +9,8 @@ tmp_data = [
     [2.3, 2.1, 1.9, 2.5, 2.1, 0.6],
 ]
 tmp_label = [1, 0, 1, 1, 1]
-
+tmp_data = pd.DataFrame(tmp_data)
+tmp_label = pd.DataFrame(tmp_label)
 
 class DataAna:
     def __init__(self, k=5):

@@ -52,17 +52,3 @@ class Testft(models.Model):
         db_table = 'testft'
         auto_created = False
 
-class Testft(models.Model):
-    t = models.DateTimeField(primary_key=True)
-    p = models.BigIntegerField(blank=True, null=True)
-    h = models.FloatField(blank=True, null=True)
-    a = models.FloatField(blank=True, null=True)
-    rt = models.TextField(blank=True, null=True)
-    hg = models.BigIntegerField(blank=True, null=True)
-    ag = models.BigIntegerField(blank=True, null=True)
-    st = models.BigIntegerField(blank=True, null=True)
-    matchid = models.TextField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'testft'

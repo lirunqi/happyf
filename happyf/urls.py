@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from happyf_dbquery import urls
+from dm1 import urls as dm_u
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('hfq/',include(urls)),
     path('api/',include(urls)),
+    path('dm/',include(dm_u)),
 ]

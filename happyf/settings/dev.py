@@ -8,7 +8,7 @@ DATABASES = {
         "NAME": "football",
         "USER": "root",
         "PASSWORD": "wobuhuiwan",
-        "HOST": "lpksir.cn",
+        "HOST": "spjplhs.cn",
         "PORT": "3306",
     }
 }

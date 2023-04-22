@@ -1,7 +1,7 @@
 from django import forms
+from .models import Dm
 
-
-class DmForm(forms.Form):
-    name = forms.CharField(max_length=200)
-    age = forms.IntegerField()
-    sex = forms.CharField(max_length=3)
+class DmForm(forms.ModelForm):
+    class Meta:
+        model = Dm
+        fields = ['name', 'age', 'sex']
